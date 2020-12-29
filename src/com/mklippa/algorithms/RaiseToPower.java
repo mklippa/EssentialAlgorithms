@@ -1,7 +1,7 @@
 package com.mklippa.algorithms;
 
 public class RaiseToPower {
-
+    // O(log(power))
     public double solve(double value, long power) {
         if (power < 0) {
             value = 1 / value;
