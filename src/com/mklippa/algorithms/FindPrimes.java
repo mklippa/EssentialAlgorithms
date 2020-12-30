@@ -5,7 +5,7 @@ import java.util.List;
 
 public class FindPrimes {
     // O(N*log(log(N)))
-    List<Integer> solve(int maxNumber) {
+    public List<Integer> solve(int maxNumber) {
         boolean[] isComposite = new boolean[maxNumber+1];
 
         for (int i = 4; i <= maxNumber; i += 2) {
