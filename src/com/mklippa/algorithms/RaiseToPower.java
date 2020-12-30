@@ -5,6 +5,8 @@ import java.util.List;
 
 public class RaiseToPower {
     public int exponentiate(int value, int exp) {
+        final int mod = (int)Math.pow(10, 9) + 7;
+
         List<Integer> powers = new ArrayList<>();
         List<Integer> valueToPowers = new ArrayList<>();
 
@@ -16,7 +18,7 @@ public class RaiseToPower {
 
         while (lastPower < exp) {
             lastPower *= 2;
-            lastValue *= lastValue;
+            lastValue = (lastValue * lastValue) % mod;
             powers.add(lastPower);
             valueToPowers.add(lastValue);
         }
@@ -26,7 +28,7 @@ public class RaiseToPower {
         for (int powerIndex = powers.size()-1; powerIndex >= 0; powerIndex--) {
             if (powers.get(powerIndex) <= exp) {
                 exp -= powers.get(powerIndex);
-                result *= valueToPowers.get(powerIndex);
+                result = (result * valueToPowers.get(powerIndex)) % mod;
             }
         }
 
