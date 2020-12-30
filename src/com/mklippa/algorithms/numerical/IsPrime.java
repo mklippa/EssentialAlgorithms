@@ -1,4 +1,4 @@
-package com.mklippa.algorithms;
+package com.mklippa.algorithms.numerical;
 
 import java.util.Random;
 

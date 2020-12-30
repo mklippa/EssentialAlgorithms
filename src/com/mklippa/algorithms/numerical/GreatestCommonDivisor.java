@@ -1,4 +1,4 @@
-package com.mklippa.algorithms;
+package com.mklippa.algorithms.numerical;
 
 public class GreatestCommonDivisor {
     public int solve(int a, int b) {

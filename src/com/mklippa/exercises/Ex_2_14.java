@@ -1,8 +1,7 @@
 package com.mklippa.exercises;
 
-import com.mklippa.algorithms.FindFactors;
-import com.mklippa.algorithms.FindPrimes;
-import com.mklippa.algorithms.GreatestCommonDivisor;
+import com.mklippa.algorithms.numerical.FindFactors;
+import com.mklippa.algorithms.numerical.GreatestCommonDivisor;
 
 public class Ex_2_14 {
     public static void generateCarmichaelNumbers(int maxNumber) {
