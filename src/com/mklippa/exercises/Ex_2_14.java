@@ -1,7 +1,6 @@
 package com.mklippa.exercises;
 
-import com.mklippa.algorithms.numerical.FindFactors;
-import com.mklippa.algorithms.numerical.GreatestCommonDivisor;
+import com.mklippa.algorithms.Numerical;
 
 public class Ex_2_14 {
     public static void generateCarmichaelNumbers(int maxNumber) {
@@ -11,7 +10,7 @@ public class Ex_2_14 {
             if (isComposite[i])
                 if (isCarmichael(i)) {
                     System.out.println(i + ": ");
-                    System.out.println(new FindFactors().solve(i));
+                    System.out.println(Numerical.findFactors(i));
                     System.out.println();
                 }
         }
