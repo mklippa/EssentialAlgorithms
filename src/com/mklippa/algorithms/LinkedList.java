@@ -2,20 +2,80 @@ package com.mklippa.algorithms;
 
 public class LinkedList {
     public static class Cell<T> {
-        public T value;
-        public Cell<T> next;
-
-        public Cell(T value){
-            this.value = value;
-        }
-
-        public Cell() {
-            this.value = null;
-        }
+        private T value;
+        private Cell<T> next;
 
         @Override
         public String toString() {
             return String.format("Value: %s", value);
+        }
+
+        public static <T extends Comparable<T>> Cell<T> selectionSort(Cell<T> input) {
+            Cell<T> sentinel = new Cell<>();
+            sentinel.next = null;
+
+            while (input.next != null) {
+                Cell<T> bestAfterMe = input;
+                T bestValue = bestAfterMe.next.value;
+
+                Cell<T> afterMe = input.next;
+                while (afterMe.next != null) {
+                    if (afterMe.next.value.compareTo(bestValue) > 0) {
+                        bestAfterMe = afterMe;
+                        bestValue = afterMe.next.value;
+                    }
+                    afterMe = afterMe.next;
+                }
+
+                Cell<T> bestCell = bestAfterMe.next;
+                bestAfterMe.next = bestCell.next;
+
+                bestCell.next = sentinel.next;
+                sentinel.next = bestCell;
+            }
+
+            return sentinel;
+        }
+
+        public static <T extends Comparable<T>> Cell<T> insertionSort(Cell<T> input) {
+            Cell<T> sentinel = new Cell<>();
+            sentinel.next = null;
+
+            input = input.next;
+            while (input != null) {
+                Cell<T> newCell = input;
+                input = input.next;
+                Cell<T> afterMe = sentinel;
+                while (afterMe.next != null && afterMe.next.value.compareTo(newCell.value) < 0)
+                    afterMe = afterMe.next;
+                newCell.next = afterMe.next;
+                afterMe.next = newCell;
+            }
+            return sentinel;
+        }
+
+        public static <T> Cell<T> copyList(Cell<T> oldSentinel) {
+            Cell<T> newSentinel = new Cell<>();
+            Cell<T> lastAdded = newSentinel;
+            Cell<T> oldCell = oldSentinel.next;
+
+            while (oldCell != null) {
+                lastAdded.next = new Cell<>();
+                lastAdded = lastAdded.next;
+                lastAdded.value = oldCell.value;
+                oldCell = oldCell.next;
+            }
+
+            lastAdded.next = null;
+            return newSentinel;
+        }
+
+        public static <T extends Comparable<T>> void insertCell(Cell<T> top, Cell<T> newCell) {
+            while (top.next != null && top.next.value.compareTo(newCell.value) < 0)
+                top = top.next;
+
+            newCell.next = top.next;
+            top.next = newCell;
         }
 
         public static <T> void addAtBeginning(Cell<T> top, Cell<T> newCell) {
