@@ -4,10 +4,34 @@ public class LinkedList {
     public static class Cell<T> {
         private T value;
         private Cell<T> next;
+        private boolean visited;
 
         @Override
         public String toString() {
             return String.format("Value: %s", value);
+        }
+
+        public static <T> boolean hasLoopMarking(Cell<T> sentinel) {
+            boolean hasLoop = false;
+
+            Cell<T> cell = sentinel;
+            while (cell.next != null) {
+                if (cell.next.visited) {
+                    cell.next = null;
+                    hasLoop = true;
+                    break;
+                }
+                cell = cell.next;
+                cell.visited = true;
+            }
+
+            cell = sentinel;
+            while (cell.next != null) {
+                cell.visited = false;
+                cell = cell.next;
+            }
+
+            return hasLoop;
         }
 
         public static <T extends Comparable<T>> Cell<T> selectionSort(Cell<T> input) {
