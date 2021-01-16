@@ -4,6 +4,20 @@ import java.util.HashSet;
 
 public class LinkedList {
 
+    public static <T> Cell<T> reverseList(Cell<T> sentinel) {
+        Cell<T> prevCell = null;
+        Cell<T> currCell = sentinel;
+        while (currCell != null) {
+            Cell<T> nextCell = currCell.next;
+            currCell.next = prevCell;
+
+            prevCell = currCell;
+            currCell = nextCell;
+        }
+
+        return prevCell;
+    }
+
     public static <T> boolean hasLoopRetracing(Cell<T> sentinel) {
         Cell<T> cell = sentinel;
         while (cell.next != null) {
@@ -178,9 +192,36 @@ public class LinkedList {
         private Cell<T> next;
         private boolean visited;
 
+        public Cell(T value, Cell<T> next) {
+            this.value = value;
+            this.next = next;
+        }
+
+        public Cell() {}
+
+        public Cell(T value) {
+            this.value = value;
+        }
+
         @Override
         public String toString() {
             return String.format("Value: %s", value);
+        }
+
+        public T getValue() {
+            return value;
+        }
+
+        public void setValue(T value) {
+            this.value = value;
+        }
+
+        public Cell<T> getNext() {
+            return next;
+        }
+
+        public void setNext(Cell<T> next) {
+            this.next = next;
         }
     }
 }

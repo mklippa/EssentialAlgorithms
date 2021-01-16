@@ -19,7 +19,7 @@ public class Ex_2_14 {
     private static boolean isCarmichael(int number) {
 
         for (int i = 1; i < number; i++) {
-            if (new GreatestCommonDivisor().solve(number, i) == 1)
+            if (Numerical.gcd(number, i) == 1)
                 if ((int)Math.pow(i, number-1) % number != 1)
                     return false;
         }
