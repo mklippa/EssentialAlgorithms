@@ -4,6 +4,16 @@ import java.util.HashSet;
 
 public class LinkedList {
 
+    public static <T> boolean hasLoopReversing(Cell<T> sentinel) {
+        if (sentinel.next == null) return false;
+
+        Cell<T> newSentinel = reverseList(sentinel);
+
+        reverseList(sentinel);
+
+        return newSentinel == sentinel;
+    }
+
     public static <T> Cell<T> reverseList(Cell<T> sentinel) {
         Cell<T> prevCell = null;
         Cell<T> currCell = sentinel;
