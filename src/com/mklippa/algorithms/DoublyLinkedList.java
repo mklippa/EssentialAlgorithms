@@ -1,6 +1,14 @@
 package com.mklippa.algorithms;
 
 public class DoublyLinkedList {
+    public static <T> void insertCell(Cell<T> afterMe, Cell<T> newCell) {
+        newCell.next = afterMe.next;
+        afterMe.next = newCell;
+
+        newCell.next.prev = newCell;
+        newCell.prev = afterMe;
+    }
+
     public static class Cell<T> {
         private T value;
         private Cell<T> next;
@@ -28,14 +36,6 @@ public class DoublyLinkedList {
 
         public void setPrev(Cell<T> prev) {
             this.prev = prev;
-        }
-
-        public static <T> void insertCell(Cell<T> afterMe, Cell<T> newCell) {
-            newCell.next = afterMe.next;
-            afterMe.next = newCell;
-
-            newCell.next.prev = newCell;
-            newCell.prev = afterMe;
         }
     }
 }
