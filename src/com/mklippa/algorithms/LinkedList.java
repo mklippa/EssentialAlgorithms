@@ -1,5 +1,7 @@
 package com.mklippa.algorithms;
 
+import java.util.HashSet;
+
 public class LinkedList {
     public static class Cell<T> {
         private T value;
@@ -9,6 +11,22 @@ public class LinkedList {
         @Override
         public String toString() {
             return String.format("Value: %s", value);
+        }
+
+        public static <T> boolean hasLoopHashTable(Cell<T> sentinel) {
+            HashSet<Cell<T>> visited = new HashSet<>();
+
+            Cell<T> cell = sentinel;
+            while (cell.next != null) {
+                if (visited.contains(cell.next)) {
+                    cell.next = null;
+                    return true;
+                }
+                visited.add(cell);
+                cell = cell.next;
+            }
+
+            return false;
         }
 
         public static <T> boolean hasLoopMarking(Cell<T> sentinel) {
