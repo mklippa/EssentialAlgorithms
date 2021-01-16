@@ -4,6 +4,22 @@ import java.util.HashSet;
 
 public class LinkedList {
 
+    public static <T> boolean hasLoopRetracing(Cell<T> sentinel) {
+        Cell<T> cell = sentinel;
+        while (cell.next != null) {
+            Cell<T> tracer = sentinel;
+            while (tracer != cell) {
+                if (tracer.next == cell.next) {
+                    cell.next = null;
+                    return true;
+                }
+                tracer = tracer.next;
+            }
+            cell = cell.next;
+        }
+        return false;
+    }
+
     public static <T> boolean hasLoopHashTable(Cell<T> sentinel) {
         HashSet<Cell<T>> visited = new HashSet<>();
 
