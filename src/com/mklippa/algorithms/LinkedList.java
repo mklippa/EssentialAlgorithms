@@ -4,6 +4,31 @@ import java.util.HashSet;
 
 public class LinkedList {
 
+    public static <T> boolean hasLoop(Cell<T> sentinel) {
+        Cell<T> slow = sentinel;
+        Cell<T> fast = sentinel;
+        while (true) {
+            if (fast == null || fast.next == null)
+                return false;
+
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (fast == slow) {
+                fast = sentinel;
+                while (fast != slow) {
+                    fast = fast.next;
+                    slow = slow.next;
+                }
+                while (slow.next != fast) {
+                    slow = slow.next;
+                }
+                slow.next = null;
+                return true;
+            }
+        }
+    }
+
     public static <T> boolean hasLoopReversing(Cell<T> sentinel) {
         if (sentinel.next == null) return false;
 
