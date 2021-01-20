@@ -1,8 +1,8 @@
-package com.mklippa.exercises;
+package com.mklippa.exercises.chapter3;
 
 import com.mklippa.algorithms.LinkedList;
 
-public class Ex_3_1 {
+public class Exercise1 {
     public static <T> LinkedList.Cell<T> addAtEnd(LinkedList.Cell<T> bottom, LinkedList.Cell<T> newCell) {
         bottom.setNext(newCell);
         return newCell;

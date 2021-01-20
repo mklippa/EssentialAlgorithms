@@ -1,8 +1,8 @@
-package com.mklippa.exercises;
+package com.mklippa.exercises.chapter2;
 
 import com.mklippa.algorithms.Numerical;
 
-public class Ex_2_14 {
+public class Exercise14 {
     public static void generateCarmichaelNumbers(int maxNumber) {
         boolean[] isComposite = generateCompositeNumbers(maxNumber);
 
