@@ -14,6 +14,12 @@ public class DoublyLinkedList {
         private Cell<T> next;
         private Cell<T> prev;
 
+        public Cell() {}
+
+        public Cell(T value) {
+            this.value = value;
+        }
+
         public T getValue() {
             return value;
         }
